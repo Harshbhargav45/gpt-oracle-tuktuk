@@ -1,0 +1,39 @@
+[toolchain]
+anchor_version = "0.31.0"
+package_manager = "yarn"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+gpt_oracle = "5pB7vzjPNHj1ZYJizKmnEZkjKjCtXydfg5DsaTxBmiqf"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 \"tests/**/*.ts\""
+
+[test]
+startup_wait = 20000
+
+[test.validator]
+url = "https://api.devnet.solana.com"
+
+[[test.validator.clone]]
+address = "LLMrieZMpbJFwN52WgmBNMxYojrpRVYXdC1RCweEbab"
+
+[[test.validator.clone]]
+address = "tuktukUrfhXT6ZT77QTU8RQtvgL967uRuVagWF57zVA"
+
+[[test.validator.clone]]
+address = "9uGkS41eWJvMeJ18ve6LdsDvd2fSotpH3vaiBZTzu5pP"
+
+[[test.validator.account]]
+address = "CJv1jLvFSLsV7X1UGq6bHr6XHacbJAfq7Tio8iqpEK6b"
+filename = "tests/task_queue_real_patched.json"
